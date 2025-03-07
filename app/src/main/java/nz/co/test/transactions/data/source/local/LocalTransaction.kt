@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(
-    tableName = "transaction",
+    tableName = "transactions"
 )
 data class LocalTransaction(
     @PrimaryKey val id: Int,
