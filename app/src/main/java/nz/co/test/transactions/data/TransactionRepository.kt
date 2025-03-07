@@ -1,10 +1,9 @@
 package nz.co.test.transactions.data
 
+import nz.co.test.transactions.util.Result
 import kotlinx.coroutines.flow.Flow
 
 interface TransactionRepository {
 
-    fun getTransactionsStream(): Flow<List<Transaction>>
-
-    suspend fun refreshTransactions()
+    fun getTransactions(): Flow<Result<List<Transaction>>>
 }
