@@ -12,8 +12,8 @@ interface TransactionDao {
      *
      * @return all transactions
      */
-    @Query("SELECT * FROM transactions ORDER BY id ASC")
-    fun observeTransactions(): Flow<List<LocalTransaction>>
+    @Query("SELECT * FROM transactions")
+    fun observeAll(): Flow<List<LocalTransaction>>
 
     /**
      * Insert or update transactions in the database. If a transaction already exists, replace it.
@@ -22,5 +22,11 @@ interface TransactionDao {
      *
      */
     @Upsert
-    suspend fun upsertTransactions(transactions: List<LocalTransaction>)
+    suspend fun upsertAll(transactions: List<LocalTransaction>)
+
+    /**
+     * Delete all transactions
+     */
+    @Query("DELETE FROM transactions")
+    suspend fun deleteAll()
 }
