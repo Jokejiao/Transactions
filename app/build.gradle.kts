@@ -18,6 +18,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "TRANSACTION_BASE_URL", "\"" + getTransactionsUrl() + "\"")
     }
 
     buildTypes {
@@ -36,6 +37,11 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
+    buildFeatures {
+        compose = true
+        buildConfig = true
+    }
 }
 
 dependencies {
@@ -46,6 +52,10 @@ dependencies {
     implementation(libs.timber)
     implementation(libs.androidx.test.espresso.idling.resources)
     implementation(libs.material)
+    implementation(libs.retrofit2)
+    implementation(libs.retrofit2.converter.gson)
+    implementation(libs.okhttp3.logging.interceptor)
+
 
     // Architecture Components
     implementation(libs.room.runtime)
@@ -124,4 +134,8 @@ dependencies {
     // AndroidX Test - Hilt testing
     androidTestImplementation(libs.hilt.android.testing)
     kspAndroidTest(libs.hilt.compiler)
+}
+
+fun getTransactionsUrl(): String? {
+    return project.findProperty("TRANSACTION_BASE_URL") as? String
 }
