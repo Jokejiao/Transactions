@@ -3,6 +3,7 @@ package nz.co.test.transactions.data.source.local
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TransactionDao {
@@ -11,8 +12,8 @@ interface TransactionDao {
      *
      * @return all transactions
      */
-    @Query("SELECT * FROM transactions")
-    suspend fun getTransactions(): List<LocalTransaction>
+    @Query("SELECT * FROM transactions ORDER BY id ASC")
+    fun observeTransactions(): Flow<List<LocalTransaction>>
 
     /**
      * Insert or update transactions in the database. If a transaction already exists, replace it.
