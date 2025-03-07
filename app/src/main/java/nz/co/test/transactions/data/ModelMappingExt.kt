@@ -1,6 +1,7 @@
 package nz.co.test.transactions.data
 
 import nz.co.test.transactions.data.source.local.LocalTransaction
+import nz.co.test.transactions.data.source.network.NetworkTransaction
 
 
 fun LocalTransaction.toExternal() = Transaction(
@@ -16,3 +17,15 @@ fun LocalTransaction.toExternal() = Transaction(
 // signature on the JVM.
 @JvmName("localToExternal")
 fun List<LocalTransaction>.toExternal() = map(LocalTransaction::toExternal)
+
+// Network to Local
+fun NetworkTransaction.toLocal() = LocalTransaction(
+    id = id,
+    transactionDate = transactionDate,
+    summary = summary,
+    debit = debit,
+    credit = credit
+)
+
+@JvmName("networkToLocal")
+fun List<NetworkTransaction>.toLocal() = map(NetworkTransaction::toLocal)
