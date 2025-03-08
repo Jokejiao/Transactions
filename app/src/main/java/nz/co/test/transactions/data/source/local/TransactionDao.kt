@@ -12,7 +12,7 @@ interface TransactionDao {
      *
      * @return all transactions
      */
-    @Query("SELECT * FROM transactions")
+    @Query("SELECT * FROM transactions ORDER BY transactionDate DESC")
     fun observeAll(): Flow<List<LocalTransaction>>
 
     /**
