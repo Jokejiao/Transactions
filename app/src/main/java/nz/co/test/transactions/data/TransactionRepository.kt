@@ -8,4 +8,6 @@ interface TransactionRepository {
     fun getTransactionsStream(): Flow<List<Transaction>>
 
     suspend fun refresh(): Boolean
+
+    fun getTransactionStream(transactionId: String): Flow<Transaction?>
 }

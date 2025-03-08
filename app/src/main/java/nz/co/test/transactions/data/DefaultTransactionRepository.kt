@@ -38,4 +38,8 @@ class DefaultTransactionRepository @Inject constructor(
             false
         }
     }
+
+    override fun getTransactionStream(transactionId: String): Flow<Transaction?> {
+        return localDataSource.observeById(transactionId.toLong()).map { it.toExternal() }
+    }
 }

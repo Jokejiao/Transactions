@@ -16,6 +16,15 @@ interface TransactionDao {
     fun observeAll(): Flow<List<LocalTransaction>>
 
     /**
+     * Observes a single transaction.
+     *
+     * @param transactionId the transaction id.
+     * @return the transaction with transactionId.
+     */
+    @Query("SELECT * FROM transactions WHERE id = :transactionId")
+    fun observeById(transactionId: Long): Flow<LocalTransaction>
+
+    /**
      * Insert or update transactions in the database. If a transaction already exists, replace it.
      *
      * @param transactions - the transactions to be inserted or updated
