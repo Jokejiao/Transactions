@@ -41,4 +41,10 @@ data class Transaction(
             credit > 0 -> Color.Green
             else -> Color.Gray
         }
+
+    fun accessibilityDescription(): String {
+        return "Transaction on ${formattedDate}. Summary: $summary. " +
+                (if (debit > 0) "Debit of $debit dollars." else "Credit of $credit dollars.") +
+                " GST applied is ${formattedGst}."
+    }
 }
