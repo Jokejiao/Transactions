@@ -36,7 +36,7 @@ abstract class DataSourceModule {
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DataModule {
+object DatabaseModule {
 
     @Singleton
     @Provides
