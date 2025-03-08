@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Transactions</string>
+    <string name="transaction_details">Transaction Details</string>
+    <string name="menu_back">Back</string>
+    <string name="loading_transactions_error">Error while loading transactions</string>
+    <string name="refresh_transactions_error">Error while refreshing transactions</string>
+    <string name="no_transactions_image_content_description">No transactions image</string>
+    <string name="transactions_are_being_loaded">Transactions are being loaded</string>
 </resources>
