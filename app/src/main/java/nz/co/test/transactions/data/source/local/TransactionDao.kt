@@ -22,7 +22,7 @@ interface TransactionDao {
      * @return the transaction with transactionId.
      */
     @Query("SELECT * FROM transactions WHERE id = :transactionId")
-    fun observeById(transactionId: Long): Flow<LocalTransaction>
+    fun observeById(transactionId: Long): Flow<LocalTransaction?>
 
     /**
      * Insert or update transactions in the database. If a transaction already exists, replace it.
