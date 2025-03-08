@@ -7,5 +7,5 @@ interface TransactionRepository {
 
     fun getTransactionsStream(): Flow<List<Transaction>>
 
-    suspend fun refresh()
+    suspend fun refresh(): Boolean
 }
