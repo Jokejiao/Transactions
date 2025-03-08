@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
     tableName = "transactions"
 )
 data class LocalTransaction(
-    @PrimaryKey val id: Int,
+    @PrimaryKey val id: Long,
     val transactionDate: String,
     val summary: String,
     val debit: Double,

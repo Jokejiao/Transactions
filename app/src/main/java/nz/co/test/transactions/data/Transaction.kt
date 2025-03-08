@@ -4,7 +4,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 data class Transaction(
-    val id: Int,
+    val id: Long,
     val transactionDate: String,
     val summary: String,
     val debit: Double,
