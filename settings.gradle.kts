@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Transactions"
 include(":app")
+include(":shared-test")
  

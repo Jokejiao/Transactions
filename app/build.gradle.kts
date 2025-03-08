@@ -49,13 +49,11 @@ dependencies {
     // App dependencies
     implementation(libs.androidx.annotation)
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.timber)
     implementation(libs.androidx.test.espresso.idling.resources)
     implementation(libs.material)
     implementation(libs.retrofit2)
     implementation(libs.retrofit2.converter.gson)
     implementation(libs.okhttp3.logging.interceptor)
-
 
     // Architecture Components
     implementation(libs.room.runtime)
@@ -122,6 +120,7 @@ dependencies {
     testImplementation(libs.androidx.test.core.ktx)
     testImplementation(libs.androidx.test.ext)
     testImplementation(libs.androidx.test.rules)
+    testImplementation(project(":shared-test"))
 
     // AndroidX Test - Instrumented testing
     androidTestImplementation(libs.androidx.test.core.ktx)
@@ -135,6 +134,7 @@ dependencies {
     androidTestImplementation(libs.androidx.test.espresso.intents)
     androidTestImplementation(libs.androidx.test.espresso.idling.resources)
     androidTestImplementation(libs.androidx.test.espresso.idling.concurrent)
+    androidTestImplementation(project(":shared-test"))
 
     // AndroidX Test - Hilt testing
     androidTestImplementation(libs.hilt.android.testing)
