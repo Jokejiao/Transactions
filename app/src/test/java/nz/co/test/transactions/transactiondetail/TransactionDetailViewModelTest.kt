@@ -34,7 +34,7 @@ class TransactionDetailViewModelTest {
     private lateinit var transactionDetailViewModel: TransactionDetailViewModel
 
     // Use a fake repository to be injected into the viewmodel
-    private lateinit var transactionsRepository: FakeTransactionRepository
+    private lateinit var transactionRepository: FakeTransactionRepository
     private val transaction = Transaction(
         id = 1,
         transactionDate = "2022-02-06T12:41:09",
@@ -45,11 +45,11 @@ class TransactionDetailViewModelTest {
 
     @Before
     fun setupViewModel() {
-        transactionsRepository = FakeTransactionRepository()
-        transactionsRepository.addTransactions(transaction)
+        transactionRepository = FakeTransactionRepository()
+        transactionRepository.addTransactions(transaction)
 
         transactionDetailViewModel = TransactionDetailViewModel(
-            transactionsRepository,
+            transactionRepository,
             SavedStateHandle(mapOf(TRANSACTION_ID_ARG to "1"))
         )
     }
@@ -65,7 +65,7 @@ class TransactionDetailViewModelTest {
     @Test
     fun transactionDetailViewModel_repositoryError() = runTest {
         // Given a repository that throws errors
-        transactionsRepository.setShouldThrowError(true)
+        transactionRepository.setShouldThrowError(true)
 
         // Then the transaction is null and the snackbar shows a loading error message
         assertThat(transactionDetailViewModel.uiState.value.transaction).isNull()
@@ -77,7 +77,7 @@ class TransactionDetailViewModelTest {
     fun transactionDetailViewModel_transactionNotFound() = runTest {
         // Given an ID for a non existent transaction
         transactionDetailViewModel = TransactionDetailViewModel(
-            transactionsRepository,
+            transactionRepository,
             SavedStateHandle(mapOf(TRANSACTION_ID_ARG to "2"))
         )
 

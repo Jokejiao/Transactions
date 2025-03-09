@@ -26,7 +26,7 @@ class TransactionsViewModelTest {
     private lateinit var transactionsViewModel: TransactionsViewModel
 
     // Use a fake repository to be injected into the viewmodel
-    private lateinit var transactionsRepository: FakeTransactionRepository
+    private lateinit var transactionRepository: FakeTransactionRepository
 
     // Set the main coroutines dispatcher for unit testing.
     @ExperimentalCoroutinesApi
@@ -36,7 +36,7 @@ class TransactionsViewModelTest {
     @Before
     fun setupViewModel() {
         // We initialise the transactions to 3, with one active and two completed
-        transactionsRepository = FakeTransactionRepository()
+        transactionRepository = FakeTransactionRepository()
         val transaction1 = Transaction(
             id = 1,
             transactionDate = "2022-02-06T12:41:09",
@@ -59,9 +59,9 @@ class TransactionsViewModelTest {
             credit = 8680.85
         )
 
-        transactionsViewModel = TransactionsViewModel(transactionsRepository)
+        transactionsViewModel = TransactionsViewModel(transactionRepository)
 
-        transactionsRepository.addTransactions(transaction1, transaction2, transaction3)
+        transactionRepository.addTransactions(transaction1, transaction2, transaction3)
     }
 
     @Test
@@ -88,7 +88,7 @@ class TransactionsViewModelTest {
     @Test
     fun loadTransactions_error() = runTest {
         // Make the repository throw errors
-        transactionsRepository.setShouldThrowError(true)
+        transactionRepository.setShouldThrowError(true)
 
         // Load transactions
         transactionsViewModel.refresh()

@@ -2,7 +2,6 @@ package nz.co.test.transactions.data.source.local
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 
 class FakeTransactionDao(initialTransactions: List<LocalTransaction>? = emptyList()) :
@@ -27,6 +26,10 @@ class FakeTransactionDao(initialTransactions: List<LocalTransaction>? = emptyLis
 
     override suspend fun deleteAll() {
         _transactions.value = mutableMapOf()
+    }
+
+    override fun getAll(): List<LocalTransaction> {
+        return _transactions.value.values.toList()
     }
 
     override fun observeAll(): Flow<List<LocalTransaction>> {

@@ -1,14 +1,12 @@
 package nz.co.test.transactions.data
 
 import androidx.annotation.VisibleForTesting
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 
 /**
  * Implementation of a transactions repository with static access to the data for easy testing.

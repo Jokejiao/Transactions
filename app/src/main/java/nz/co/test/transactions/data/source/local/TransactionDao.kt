@@ -1,5 +1,6 @@
 package nz.co.test.transactions.data.source.local
 
+import androidx.annotation.VisibleForTesting
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
@@ -38,4 +39,11 @@ interface TransactionDao {
      */
     @Query("DELETE FROM transactions")
     suspend fun deleteAll()
+
+    /**
+     * Get list of transactions.
+     */
+    @VisibleForTesting
+    @Query("SELECT * FROM transactions")
+    fun getAll(): List<LocalTransaction>
 }

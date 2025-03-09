@@ -17,7 +17,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "nz.co.test.transactions.CustomTestRunner"
         buildConfigField("String", "TRANSACTION_BASE_URL", "\"" + getTransactionsUrl() + "\"")
     }
 
