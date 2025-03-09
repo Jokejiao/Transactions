@@ -10,6 +10,7 @@ This is a modern Android application following the best practices of Android dev
 - **Offline-First Repository** with Room Database as **SSOT**
 - Initial Transaction Fetch from Network on First Launch
 - Manual Data Refresh via "Refresh" Button
+- Transactions are sorted by date in descending order
 - GST Calculation Implementation
 - Debit/Credit Transaction Colors
 - TalkBack Accessibility Support
@@ -33,3 +34,7 @@ The app displays the transactions, where debit and credit transactions are shown
 Users can refresh the data anytime by clicking the "Refresh" button in the top app bar.
 The Room database acts as the Single Source of Truth (SSOT), ensuring offline access to transactions.
 TalkBack is enabled for accessibility, providing voice feedback when interacting with transactions.
+
+## Build Environment
+Android Studio Meerkat | 2024.3.1
+Build #AI-243.22562.218.2431.13114758, built on February 25, 2025
