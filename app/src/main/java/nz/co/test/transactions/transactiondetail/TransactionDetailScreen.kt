@@ -37,8 +37,10 @@ fun TransactionDetailScreen(
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: TransactionDetailViewModel = hiltViewModel(),
-    snackbarHostState: SnackbarHostState = remember { SnackbarHostState() }
 ) {
+    val snackbarHostState = remember { SnackbarHostState() }
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
     Scaffold(
         modifier = modifier.fillMaxSize(),
         snackbarHost = { SnackbarHost(snackbarHostState) },
@@ -48,7 +50,6 @@ fun TransactionDetailScreen(
             )
         }
     ) { paddingValues ->
-        val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
         TransactionContent(
             loading = uiState.isLoading,

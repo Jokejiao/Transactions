@@ -19,6 +19,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -51,8 +52,10 @@ fun TransactionsScreen(
     onTransactionClick: (Transaction) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: TransactionsViewModel = hiltViewModel(),
-    snackbarHostState: SnackbarHostState = remember { SnackbarHostState() }
 ) {
+    val snackbarHostState = remember { SnackbarHostState() }
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
     Scaffold(
         modifier = modifier.fillMaxSize(),
         topBar = {
@@ -60,8 +63,8 @@ fun TransactionsScreen(
                 onRefresh = { viewModel.refresh() }
             )
         },
+        snackbarHost = { SnackbarHost(snackbarHostState) }
     ) { paddingValues ->
-        val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
         TransactionsContent(
             loading = uiState.isLoading,
