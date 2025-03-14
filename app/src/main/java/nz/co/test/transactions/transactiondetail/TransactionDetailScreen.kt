@@ -139,7 +139,7 @@ fun TransactionDetail(transaction: Transaction, modifier: Modifier = Modifier) {
                 ) {
                     Text(text = "GST (15%)", fontSize = 16.sp)
                     Text(
-                        text = "$${transaction.formattedGst}",
+                        text = transaction.formattedGst,
                         fontSize = 16.sp
                     )
                 }
